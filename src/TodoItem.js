@@ -9,17 +9,26 @@ function TodoItem({deleted, text, doit}) {
         alignItems : "center",
         justifyContent : "space-between",
         width : '100%',    
-        margin : '0px 24px 0px 24px',
-        padding : '12px',
+        margin : '4px 24px 4px 24px',
+        padding : '8px 24px 8px 24px',
         borderWidth : '2px',
         borderColor : "pink",
         borderStyle : "dotted",
         borderRadius : '16px',
+        
       }
       }>
-          <span> V </span>
-          <p> {text} </p>
-          <span> X </span>   
+          <span style={{
+            margin : 0,
+            fontWeight : "bold",    
+             }}> V </span>
+          <p style={{
+            margin : 0,
+          }}> {text} </p>
+          <span style={{
+            margin : 0,
+            fontWeight : "bold",   
+          }}> X </span>   
       </li>
       </div>
     );
