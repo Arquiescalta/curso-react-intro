@@ -1,6 +1,12 @@
 function TodoCreate() {
     return (
-        <button> + </button>
+        <button style={{
+            backgroundColor : "skyblue",
+            opacity : '50%',
+            borderWidth : '2px',
+            borderStyle : "dotted",
+            borderColor : "pink"
+        }}> + </button>
     );
   }
   

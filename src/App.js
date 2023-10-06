@@ -3,7 +3,7 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoCreate } from './TodoCreate';
 import { TodoItem } from './TodoItem';
-import './App.css';
+
 import React from 'react';
 
 const defaultToDos = [
@@ -15,7 +15,7 @@ const defaultToDos = [
 
 function App() {
   return (
-    <React.Fragment>
+    <>
 
 <TodoCounter completed={16} total={20}/>
       <TodoSearch/>
@@ -31,7 +31,7 @@ function App() {
 
       <TodoCreate/>
 
-    </React.Fragment>   
+    </>   
   );
 }
 
@@ -44,3 +44,10 @@ Se hace de la siguiente manera ''<TodoItem />'' */
 /* Gracias a que extraimos el componente, para crear
 Mas de este en el HTML solo debemos copiar el 
 componente y pasara con todo su contenido*/
+
+/* <React.Fragment>  </React.Fragment>  
+llama a react, por lo tanto, debemos importarlo. 
+De otra manera para tener la misma funcionalidad
+podemos usar <>  </> para tener separado todo*/
+
+
