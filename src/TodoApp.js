@@ -1,4 +1,4 @@
-function TodoList({children}) {
+function TodoApp({children}) {
     return (
         <ul>
             {children}
@@ -6,4 +6,4 @@ function TodoList({children}) {
     );
   }
   
-  export {TodoList}
+  export {TodoApp}

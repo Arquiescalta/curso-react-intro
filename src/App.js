@@ -4,24 +4,34 @@ import { TodoList } from './TodoList';
 import { TodoCreate } from './TodoCreate';
 import { TodoItem } from './TodoItem';
 import './App.css';
+import React from 'react';
+
+const defaultToDos = [
+  {text : 'cardio', doit : false},
+  {text : 'programacion', doit : false},
+  {text : 'piano', doit : false},
+]
 
 
 function App() {
   return (
-    <div className="App">
-      
-      <TodoCounter />
+    <React.Fragment>
+
+<TodoCounter completed={16} total={20}/>
       <TodoSearch/>
 
       <TodoList>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {defaultToDos.map(todo => (
+          <TodoItem 
+          key={todo.text} 
+          text={todo.text}
+          completed={todo.doit}/>
+        ))}
       </TodoList>
 
       <TodoCreate/>
 
-    </div>
+    </React.Fragment>   
   );
 }
 
