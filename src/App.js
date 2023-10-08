@@ -7,9 +7,9 @@ import { TodoItem } from './TodoItem';
 import React from 'react';
 
 const defaultToDos = [
-  {text : 'cardio', doit : false},
+  {text : 'cardio', doit : true},
   {text : 'programacion', doit : false},
-  {text : 'piano', doit : false},
+  {text : 'piano', doit : true},
 ]
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <TodoItem 
           key={todo.text} 
           text={todo.text}
-          completed={todo.doit}/>
+          doit={todo.doit}/>
         ))}
       </TodoList>
 

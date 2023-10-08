@@ -1,5 +1,7 @@
+
 function TodoCounter({total, completed}) {
     return (
+
         <h2 style={{
             fontSize : '24px',
             textAlign : 'center',
@@ -11,4 +13,4 @@ function TodoCounter({total, completed}) {
     );
   }
   
-  export {TodoCounter}
+  export {TodoCounter};

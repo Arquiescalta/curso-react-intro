@@ -1,9 +1,11 @@
+import './TodoItem.css'
 function TodoItem({deleted, text, doit}) {
     return (
       <div style={{
         display : "flex",
       }}>
-      <li style={{
+      <li      className="TodoItem"
+        style={{
         display : "flex",
         flexDirection : "row",
         alignItems : "center",
@@ -14,24 +16,21 @@ function TodoItem({deleted, text, doit}) {
         borderWidth : '2px',
         borderColor : "pink",
         borderStyle : "dotted",
-        borderRadius : '16px',
-        
+        borderRadius : '16px',       
       }
+      
       }>
-          <span style={{
-            margin : 0,
-            fontWeight : "bold",    
-             }}> V </span>
-          <p style={{
-            margin : 0,
-          }}> {text} </p>
-          <span style={{
-            margin : 0,
-            fontWeight : "bold",   
-          }}> X </span>   
+        <span className={`Icon-check ${doit && 'Icon-check--active'}` }  > V </span>
+
+        <p className={`TodoItem-p ${doit && 'TodoItem-p--complete'}` } > {text} </p>
+       
+        <span className='Icon-delete'> X </span>   
       </li>
       </div>
     );
   }
 
   export {TodoItem}
+
+  /*Agregar JS código css para hacer un css dinámico      
+  <span className={`Icon-check ${doit && 'Icon-check--active'}` }  > V </span>*/

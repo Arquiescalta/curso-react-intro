@@ -1,0 +1,31 @@
+
+.TodoItem-p
+{margin : 0;} 
+
+.TodoItem-p--complete
+{text-decoration-line: line-through;} 
+
+.Icon-check {
+    margin: 0;
+}
+
+.Icon-check:hover{
+    color: greenyellow;
+    transform: scale(120%);
+}
+
+.Icon-check--active {
+    font-weight: bold;
+    color: green;
+}
+
+.Icon-delete {
+    font-weight: bold;  
+}
+
+.Icon-delete:hover {
+    color: red;
+    transform: scale(120%);
+}
+
+
