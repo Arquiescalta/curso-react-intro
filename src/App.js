@@ -12,7 +12,6 @@ const defaultToDos = [
   {text : 'piano', doit : false},
 ]
 
-
 function App() {
   return (
     <>

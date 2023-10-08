@@ -1,9 +1,12 @@
 function TodoCreate() {
     return (
         <div style={{
-            display : "flex",
-            justifyContent : "center",
-            margin : '0px 24px 0px 24px',
+            display: "flex",
+            justifySelf : "center",
+            position : "absolute",
+            bottom : '40px',
+            right : '24px',
+            left : '24px'
         }}>
         <button style={{
             backgroundColor : "skyblue",
@@ -13,7 +16,7 @@ function TodoCreate() {
             borderStyle : "dotted",
             borderColor : "pink",
             fontSize : '24px',
-            width : '100%',
+            width : '100%'
         }}> + </button>
         </div>
 
