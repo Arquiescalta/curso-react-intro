@@ -1,5 +1,5 @@
 
-function TodoCounter({total, completed}) {
+function TodoCounter({total, completed,}) {
     return (
 
         <h2 style={{
@@ -7,7 +7,9 @@ function TodoCounter({total, completed}) {
             textAlign : 'center',
             margin : 0,
             padding : '32px',
-        }}>
+        }}
+
+>
             You have completed {completed} of {total} ToDo's
         </h2>
     );

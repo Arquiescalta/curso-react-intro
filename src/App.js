@@ -9,24 +9,41 @@ import React from 'react';
 const defaultToDos = [
   {text : 'cardio', doit : true},
   {text : 'programacion', doit : false},
-  {text : 'piano', doit : true},
-]
+  {text : 'piano', doit : false},
+  {text : 'estados derivados', doit : true},
+  {text : 'estadssos derivadsos', doit : true},
+];
 
 function App() {
+  const [toDos, setToDos] = React.useState(
+    defaultToDos);
+
+  const [searchValue, setSearchValue] = React.
+  useState('');
+
+  const completedToDos = toDos.filter(todo => !!todo.doit).length;
+  const totalToDos = toDos.length;
+
   return (
+
     <>
-
-<TodoCounter completed={16} total={20}/>
-      <TodoSearch/>
-
+<TodoCounter completed={completedToDos} 
+  total={totalToDos}/>
+      <TodoSearch
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      />
+      
       <TodoList>
+
+
         {defaultToDos.map(todo => (
           <TodoItem 
           key={todo.text} 
           text={todo.text}
           doit={todo.doit}/>
         ))}
-      </TodoList>
+      </TodoList >
 
       <TodoCreate/>
 

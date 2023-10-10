@@ -10,14 +10,17 @@ function TodoCreate() {
         }}>
         <button style={{
             backgroundColor : "skyblue",
-            opacity : '50%',
             borderWidth : '4px',
             borderRadius : '16px',
             borderStyle : "dotted",
             borderColor : "pink",
             fontSize : '24px',
+            fontWeight : "bold",
             width : '100%'
-        }}> + </button>
+        }}
+        onClick={
+            () => console.log('you touch click button')}> + </button>
+    
         </div>
 
     );

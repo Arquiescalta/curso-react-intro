@@ -31,6 +31,3 @@ function TodoItem({deleted, text, doit}) {
   }
 
   export {TodoItem}
-
-  /*Agregar JS código css para hacer un css dinámico      
-  <span className={`Icon-check ${doit && 'Icon-check--active'}` }  > V </span>*/
