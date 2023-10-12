@@ -11,10 +11,12 @@ const defaultToDos = [
   {text : 'programacion', doit : false},
   {text : 'piano', doit : false},
   {text : 'estados derivados', doit : true},
-  {text : 'estadssos derivadsos', doit : true},
+  {text : 'Casco moto', doit : true},
 ];
 
+
 function App() {
+
   const [toDos, setToDos] = React.useState(
     defaultToDos);
 
@@ -23,6 +25,23 @@ function App() {
 
   const completedToDos = toDos.filter(todo => !!todo.doit).length;
   const totalToDos = toDos.length;
+
+  const searchTodos = toDos.filter(
+    (todo) => {    
+      const todoText = todo.text.toLowerCase()
+      const searchText = searchValue.toLowerCase()
+      return todoText.includes(searchText)
+    })
+
+    const completeTodo = (text) => {
+      const newTodos = [...toDos]
+      const index = newTodos.findIndex(
+        (todo => todo.text == text)
+      )
+      newTodos[index].doit = true
+      setToDos (newTodos);
+    }
+
 
   return (
 
@@ -35,13 +54,13 @@ function App() {
       />
       
       <TodoList>
-
-
-        {defaultToDos.map(todo => (
+        {searchTodos.map(todo => (
           <TodoItem 
           key={todo.text} 
           text={todo.text}
-          doit={todo.doit}/>
+          doit={todo.doit}
+          onComplete = {()=> {completeTodo(todo.text)}}
+/>
         ))}
       </TodoList >
 

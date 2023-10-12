@@ -1,3 +1,5 @@
+import React from "react";
+
 function TodoCreate() {
     return (
         <div style={{
@@ -18,8 +20,12 @@ function TodoCreate() {
             fontWeight : "bold",
             width : '100%'
         }}
-        onClick={
-            () => console.log('you touch click button')}> + </button>
+
+        onClick={() => {
+
+            console.log('click')
+
+        }}> + </button>
     
         </div>
 

@@ -1,5 +1,5 @@
 import './TodoItem.css'
-function TodoItem({deleted, text, doit}) {
+function TodoItem({deleted, text, doit, onComplete }) {
     return (
       <div style={{
         display : "flex",
@@ -20,7 +20,11 @@ function TodoItem({deleted, text, doit}) {
       }
       
       }>
-        <span className={`Icon-check ${doit && 'Icon-check--active'}` }  > V </span>
+        <span 
+        className={`Icon-check ${doit && 'Icon-check--active'}`}  
+        onClick={onComplete}
+
+        > V </span>
 
         <p className={`TodoItem-p ${doit && 'TodoItem-p--complete'}` } > {text} </p>
        
