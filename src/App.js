@@ -38,10 +38,25 @@ function App() {
       const index = newTodos.findIndex(
         (todo => todo.text == text)
       )
-      newTodos[index].doit = true
+  
+      if (newTodos[index].doit == false) {
+        newTodos[index].doit = true
+        
+      }else {
+        newTodos[index].doit = false
+        
+      }
       setToDos (newTodos);
     }
 
+    const deleteTodo = (text) => {
+      const newTodos = [...toDos]
+      const index = newTodos.findIndex(
+        (todo => todo.text == text)
+      );
+      newTodos.splice(index, 1)
+      setToDos (newTodos);
+    }
 
   return (
 
@@ -60,6 +75,8 @@ function App() {
           text={todo.text}
           doit={todo.doit}
           onComplete = {()=> {completeTodo(todo.text)}}
+          onDelete = {()=> {deleteTodo(todo.text)}}
+
 />
         ))}
       </TodoList >

@@ -1,5 +1,5 @@
 import './TodoItem.css'
-function TodoItem({deleted, text, doit, onComplete }) {
+function TodoItem({deleted, text, doit, onComplete, onDelete }) {
     return (
       <div style={{
         display : "flex",
@@ -28,7 +28,11 @@ function TodoItem({deleted, text, doit, onComplete }) {
 
         <p className={`TodoItem-p ${doit && 'TodoItem-p--complete'}` } > {text} </p>
        
-        <span className='Icon-delete'> X </span>   
+        <span 
+        className='Icon-delete'
+        onClick={onDelete}
+
+        > X </span>   
       </li>
       </div>
     );
