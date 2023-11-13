@@ -1,14 +1,18 @@
 
-.TodoItem-p
-{margin : 0;} 
+.TodoItem-p{
+    margin : 0;
+    font-size: 16px;
+} 
 
 .TodoItem-p--complete{
     text-decoration-line: line-through;
+
     color: green;
 } 
 
 .Icon-check {
     margin: 0;
+    font-size: 20px;
 }
 
 .Icon-check:hover{
@@ -23,6 +27,7 @@
 
 .Icon-delete {
     font-weight: bold;  
+    font-size: 20px;
 }
 
 .Icon-delete:hover {
