@@ -1,5 +1,8 @@
+import React from 'react';
 import './TodoItem.css'
-function TodoItem({deleted, text, doit, onComplete, onDelete }) {
+import { CompleteIcon } from "./CompleteIcon";
+import { DeleteIcon } from "./DeleteIcon";
+function TodoItem({text, doit, onComplete, onDelete }) {
     return (
       <div style={{
         display : "flex",
@@ -17,22 +20,17 @@ function TodoItem({deleted, text, doit, onComplete, onDelete }) {
         borderColor : "pink",
         borderStyle : "dotted",
         borderRadius : '16px',       
-      }
-      
+      }      
       }>
-        <span 
-        className={`Icon-check ${doit && 'Icon-check--active'}`}  
-        onClick={onComplete}
-
-        > V </span>
-
+        
+        <CompleteIcon
+          className={`Icon-check ${doit && "Icon-check--active"}`}
+          onClick={onComplete}
+        />
+         
         <p className={`TodoItem-p ${doit && 'TodoItem-p--complete'}` } > {text} </p>
-       
-        <span 
-        className='Icon-delete'
-        onClick={onDelete}
 
-        > X </span>   
+                <DeleteIcon className="Icon-delete" onClick={onDelete} />      
       </li>
       </div>
     );

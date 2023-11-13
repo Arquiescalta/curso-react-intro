@@ -2,8 +2,10 @@
 .TodoItem-p
 {margin : 0;} 
 
-.TodoItem-p--complete
-{text-decoration-line: line-through;} 
+.TodoItem-p--complete{
+    text-decoration-line: line-through;
+    color: green;
+} 
 
 .Icon-check {
     margin: 0;
