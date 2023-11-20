@@ -3,7 +3,6 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoCreate } from './TodoCreate';
 import { TodoItem } from './TodoItem';
-
 import React from 'react';
 
 // const defaultToDos = [
@@ -16,18 +15,33 @@ import React from 'react';
 
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultToDos))
 
-function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
+function UseLocalStorage(itemName, initialValue ) {
+  const localStorageItem = localStorage.getItem(itemName);
+  
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName,
+    JSON.stringify([initialValue]));
+    parsedItem = [];
+  }else{
+    parsedItem = JSON.parse(localStorageItem);
+  }
 
-if (!localStorageTodos) {
-  localStorage.setItem("TODOS_V1",JSON.stringify([]));
-  parsedTodos = [];
-}else{
-  parsedTodos = JSON.parse(localStorageTodos);
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem= (newItems) => {
+    localStorage.setItem(itemName, 
+    JSON.stringify(newItems))
+    setItem(newItems);
+  };
+
+  return [item, saveItem];
+
 }
 
-  const [toDos, setToDos] = React.useState(parsedTodos);
+function App() {
+
+  const [toDos, saveTodos] = UseLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.
   useState('');
 
@@ -40,11 +54,6 @@ if (!localStorageTodos) {
       const searchText = searchValue.toLowerCase()
       return todoText.includes(searchText)
     })
-
-    const saveTodos = (newTodos) => {
-      localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
-      setToDos(newTodos);
-    };
 
     const completeTodo = (text) => {
       const newTodos = [...toDos]
