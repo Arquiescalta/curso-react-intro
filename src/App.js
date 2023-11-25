@@ -16,18 +16,33 @@ import React from 'react';
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultToDos))
 
 function UseLocalStorage(itemName, initialValue ) {
-  const localStorageItem = localStorage.getItem(itemName);
-  
-  let parsedItem;
-  if (!localStorageItem) {
-    localStorage.setItem(itemName,
-    JSON.stringify([initialValue]));
-    parsedItem = [];
-  }else{
-    parsedItem = JSON.parse(localStorageItem);
-  }
 
-  const [item, setItem] = React.useState(parsedItem);
+  const [item, setItem] = React.useState(initialValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      const localStorageItem = localStorage.getItem(itemName);
+
+      let parsedItem;
+  
+      try {
+        if (!localStorageItem) {
+          localStorage.setItem(itemName,
+          JSON.stringify([initialValue]));
+          parsedItem = [];
+        }else{
+          parsedItem = JSON.parse(localStorageItem);
+          setItem(parsedItem)
+        }
+        setLoading(false)
+      } catch (error) {
+        setLoading(false)
+        setError(true)
+      }}, 1000);
+
+}, [])
 
   const saveItem= (newItems) => {
     localStorage.setItem(itemName, 
@@ -35,13 +50,15 @@ function UseLocalStorage(itemName, initialValue ) {
     setItem(newItems);
   };
 
-  return [item, saveItem];
-
+  return {item, saveItem, loading, error};
 }
 
 function App() {
 
-  const [toDos, saveTodos] = UseLocalStorage("TODOS_V1", []);
+  const {item : toDos,
+     saveItem: saveTodos,
+      loading,
+       error} = UseLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.
   useState('');
 
@@ -82,7 +99,7 @@ function App() {
 
   return (
 
-    <>
+<>
 <TodoCounter completed={completedToDos} 
   total={totalToDos}/>
       <TodoSearch
@@ -91,6 +108,30 @@ function App() {
       />
       
       <TodoList>
+
+        {loading && <p
+        style={{
+          fontSize : '12px',
+          textAlign : 'center',
+          margin : 0,
+          padding : '32px',
+      }}>Estamos cargando...</p>}
+        {error && <p>Desesperate, error</p>}
+        {((!loading && totalToDos == 0)) && <p
+        style={{
+          fontSize : '24px',
+          textAlign : 'center',
+          margin : 0,
+          padding : '32px',
+      }}
+      >Crea tu primer Todo</p>}
+        {((!loading && searchTodos == 0 && totalToDos > 0)) && <p
+        style={{
+          fontSize : '24px',
+          textAlign : 'center',
+          margin : 0,
+          padding : '32px',
+      }}>No hay coincidencias</p>}
         {searchTodos.map(todo => (
           <TodoItem 
           key={todo.text} 
@@ -105,7 +146,7 @@ function App() {
 
       <TodoCreate/>
 
-    </>   
+</>   
   );
 }
 

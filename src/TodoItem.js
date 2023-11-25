@@ -22,7 +22,7 @@ function TodoItem({text, doit, onComplete, onDelete }) {
         borderRadius : '16px',       
       }      
       }>
-        
+
         <CompleteIcon
           className={`Icon-check ${doit && "Icon-check--active"}`}
           onClick={onComplete}

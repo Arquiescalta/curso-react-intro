@@ -1,8 +1,18 @@
 
 function TodoCounter({total, completed,}) {
     return (
+        total == 0 ? 
+        <h2
+        style={{
+            fontSize : '24px',
+            textAlign : 'center',
+            margin : 0,
+            padding : '32px',
+        }}
+        
+        >Esperando ToDos</h2>:
 
-        total==completed ?
+        total==completed && total !== 0 ? 
         
         <h2 style={{
             fontSize : '24px',
@@ -23,6 +33,8 @@ function TodoCounter({total, completed,}) {
 >
             You have completed {completed} of {total} ToDo's
         </h2>
+
+        
 
     );
   }
