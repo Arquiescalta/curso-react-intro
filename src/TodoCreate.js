@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoCreate() {
+function TodoCreate({setOpenModal}) {
     return (
         <div style={{
             display: "flex",
@@ -22,9 +22,7 @@ function TodoCreate() {
         }}
 
         onClick={() => {
-
-            console.log('click')
-
+                setOpenModal(state => !state)
         }}> + </button>
     
         </div>

@@ -3,6 +3,7 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoCreate } from './TodoCreate';
 import { TodoItem } from './TodoItem';
+import { Modal } from "./Modal";
 import React from 'react';
 
 // const defaultToDos = [
@@ -20,6 +21,7 @@ function UseLocalStorage(itemName, initialValue ) {
   const [item, setItem] = React.useState(initialValue);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+  
 
   React.useEffect(()=>{
     setTimeout(()=>{
@@ -62,6 +64,7 @@ function App() {
   const [searchValue, setSearchValue] = React.
   useState('');
 
+  const [openModal, setOpenModal] = React.useState(false);
   const completedToDos = toDos.filter(todo => !!todo.doit).length;
   const totalToDos = toDos.length;
 
@@ -96,7 +99,6 @@ function App() {
       newTodos.splice(index, 1)
       saveTodos (newTodos);
     }
-
   return (
 
 <>
@@ -139,12 +141,17 @@ function App() {
           doit={todo.doit}
           onComplete = {()=> {completeTodo(todo.text)}}
           onDelete = {()=> {deleteTodo(todo.text)}}
-
 />
         ))}
       </TodoList >
+      <TodoCreate
+      setOpenModal={setOpenModal}/>
 
-      <TodoCreate/>
+      {openModal && ( 
+      <Modal>
+        La funcionalidad de agregar ToDos
+      </Modal>)}
+
 
 </>   
   );
