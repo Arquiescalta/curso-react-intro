@@ -1,6 +1,12 @@
 import React from "react";
 
-function TodoForm({setOpenModal}) {
+function TodoForm({setOpenModal, addTodo}) {
+
+    const [newTodoValue, setNewTodoValue] = React.useState('')
+
+    const onChange = (event)=>{
+        setNewTodoValue(event.target.value)
+    }
 
     return (
         <form onSubmit={(event)=>{event.preventDefault()}}
@@ -22,19 +28,29 @@ function TodoForm({setOpenModal}) {
                 alignContent : 'center',
                 height : '100px',
                 width : '100%',
-            }}>
-                Escribe tu nuevo ToDo
-            </textarea>
-            <div>
+            }}
+            placeholder="escribir ToDo"
+            value={newTodoValue}
+            onChange={onChange}
+            >
+                
+                
+            </textarea> 
+            <div>   
 
             <button className="aceptarTodos"
-            onClick={(state) => {
+
+            onClick={() => {
+                addTodo(newTodoValue)
                 setOpenModal(state => !state)
+
         }}>Aceptar</button>
 
             <button className="cancelar"
-            onClick={(state) => {
+
+            onClick={() => {
                 setOpenModal(state => !state)
+
         }}>Cancelar</button>
             </div>
         </form>

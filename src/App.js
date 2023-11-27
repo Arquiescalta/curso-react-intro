@@ -76,6 +76,15 @@ function App() {
       return todoText.includes(searchText)
     })
 
+    const addTodo = (text) => {
+      const newTodos = [...toDos]
+      newTodos.push({
+        text,
+        doit : false,
+      })
+      saveTodos(newTodos)
+    }
+
     const completeTodo = (text) => {
       const newTodos = [...toDos]
       const index = newTodos.findIndex(
@@ -101,7 +110,6 @@ function App() {
       saveTodos (newTodos);
     }
   return (
-
 <>
 <TodoCounter completed={completedToDos} 
   total={totalToDos}/>
@@ -150,9 +158,10 @@ function App() {
 
       {openModal && ( 
       <Modal>
-        <TodoForm/>
+        <TodoForm
+        setOpenModal={setOpenModal}
+        addTodo={addTodo}/>
       </Modal>)}
-
 
 </>   
   );
