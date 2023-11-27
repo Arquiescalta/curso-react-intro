@@ -11,8 +11,17 @@ body {
 div#root {
   display: flex;
   flex-direction: column;
+  z-index: 0;
 }
 
+div#Modal {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  position: relative;
+  top: -100px;
+}
 ul {
   padding: 0;
   margin : 20px 0px 20px 0px;

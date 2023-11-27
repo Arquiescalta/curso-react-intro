@@ -4,6 +4,7 @@ import { TodoList } from './TodoList';
 import { TodoCreate } from './TodoCreate';
 import { TodoItem } from './TodoItem';
 import { Modal } from "./Modal";
+import { TodoForm } from "./TodoForm";
 import React from 'react';
 
 // const defaultToDos = [
@@ -149,7 +150,7 @@ function App() {
 
       {openModal && ( 
       <Modal>
-        La funcionalidad de agregar ToDos
+        <TodoForm/>
       </Modal>)}
 
 

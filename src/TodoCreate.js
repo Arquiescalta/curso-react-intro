@@ -8,7 +8,7 @@ function TodoCreate({setOpenModal}) {
             position : "absolute",
             bottom : '40px',
             right : '24px',
-            left : '24px'
+            left : '24px',
         }}>
         <button style={{
             backgroundColor : "skyblue",
@@ -21,7 +21,7 @@ function TodoCreate({setOpenModal}) {
             width : '100%'
         }}
 
-        onClick={() => {
+        onClick={(state) => {
                 setOpenModal(state => !state)
         }}> + </button>
     
